@@ -1,4 +1,4 @@
-/*
+/**
  * This is a package.
  */
-pacakge package-info.java;
+pacakge com.example;
