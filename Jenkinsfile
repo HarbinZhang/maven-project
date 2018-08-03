@@ -4,7 +4,7 @@ pipeline {
     tools {
         maven 'localMaven'
     }
-    
+
 	stages{
 		stage('Build'){
 			steps{
@@ -13,9 +13,15 @@ pipeline {
 			post {
 				success {
 					echo 'Now Archiving'
-					// archiveArtifacts artifacts: '**/target/*.war'
+					archiveArtifacts artifacts: '**/target/*.war'
 				}
 			}
 		}
+
+        stage('Deploy to Staging'){
+            steps{
+                build job: 'Deploy-to-staging'
+            }
+        }
 	}
 }
